@@ -240,16 +240,16 @@ namespace sitecore.admin.CacheTunerV2
 
             HtmlTable table = tblCacheStats;
 
-            Sitecore.Web.HtmlUtil.AddRow(table, new string[] { string.Empty, "Name", "Count", "Size", "Delta", "MaxSize",
+            Sitecore.Web.HtmlUtil.AddRow(table, new string[] { "Name", "Count", "Size", "Delta", "MaxSize",
             "Severity","Suggestion" });
-            table.Rows[0].Style.Add(HtmlTextWriterStyle.BackgroundColor, "#DDEAF9");
-            table.Rows[0].Style.Add(HtmlTextWriterStyle.Color, "black");
-            table.Rows[0].Style.Add(HtmlTextWriterStyle.BorderCollapse, "collapse");
-            table.Rows[0].Style.Add("border", "1px solid red");
-            table.Rows[0].Style.Add(HtmlTextWriterStyle.TextAlign, "center");
-            table.Rows[0].Style.Add(HtmlTextWriterStyle.FontWeight, "bold");
-
-            //table.Rows[0].Cells[0].Style.Add(HtmlTextWriterStyle.Visibility, "hidden");
+            table.Rows[0].Attributes["class"] = "bg-gray-100 font-bold";
+            table.Rows[0].Cells[0].Attributes["class"] = "px-4 py-2 border";
+            table.Rows[0].Cells[1].Attributes["class"] = "px-4 py-2 border";
+            table.Rows[0].Cells[2].Attributes["class"] = "px-4 py-2 border";
+            table.Rows[0].Cells[3].Attributes["class"] = "px-4 py-2 border";
+            table.Rows[0].Cells[4].Attributes["class"] = "px-4 py-2 border";
+            table.Rows[0].Cells[5].Attributes["class"] = "px-4 py-2 border";
+            table.Rows[0].Cells[6].Attributes["class"] = "px-4 py-2 border";
 
             // Reset counters
             CountTotal = 0;
@@ -287,7 +287,7 @@ namespace sitecore.admin.CacheTunerV2
                     severityLevel = "ALERT";
                     description = @"Time to tune this cache! Reason : 80% exceeded. New Cache Size should be (following 50 % Increment rule)
                 :" + Sitecore.StringUtil.GetSizeString((maxSize + (maxSize * 50) / 100)) + ". % of Usage : " + thresholdValue.ToString();
-                    backGroundColor = "red";
+                    backGroundColor = "bg-red-500 border-red-700 font-semibold";
                 }
                 // OR If Delta value changes
                 else if (size != @int)
@@ -295,18 +295,18 @@ namespace sitecore.admin.CacheTunerV2
                     severityLevel = "ALERT";
                     description = @"Time to tune this cache! Reason : Delta fluctuation. New Cache Size should be (following 50 % Increment rule)
                 :" + Sitecore.StringUtil.GetSizeString((maxSize + (maxSize * 50) / 100)) + ". % of Usage : " + thresholdValue.ToString();
-                    backGroundColor = "red";
+                    backGroundColor = "bg-red-500 border-red-700 font-semibold";
                 }
                 else if (thresholdValue >= 50)
                 {
                     severityLevel = "WARNING";
                     description = "50% of this cache is being utilized. Its not a big reason to worry. But good to keep an eye on this.";
-                    backGroundColor = "orange";
+                    backGroundColor = "bg-orange-500 border-orange-700";
                 }
                 else
                 {
                     severityLevel = "NORMAL";
-                    backGroundColor = "lightgreen";
+                    backGroundColor = "bg-green-500 border-green-700";
                 }
 
                 string cacheNameWithLink = string.Empty;
@@ -324,7 +324,7 @@ namespace sitecore.admin.CacheTunerV2
 
                 // Add Row data
                 HtmlTableRow row = Sitecore.Web.HtmlUtil.AddRow(table,
-                    new string[] { string.Empty, cacheNameWithLink,
+                    new string[] { cacheNameWithLink,
                     count.ToString(),
                     Sitecore.StringUtil.GetSizeString(size),
                     Sitecore.StringUtil.GetSizeString(delta),
@@ -332,17 +332,8 @@ namespace sitecore.admin.CacheTunerV2
                     severityLevel,
                     description});
 
-                // 3rd and 4th column should be righ aligned
-                for (int i = 2; i < row.Cells.Count; i++)
-                {
-                    row.Cells[i].Align = "right";
-                    // We just need Count Size and Delta to
-                    // be right aligned
-                    if (i == 5)
-                        break;
-                }
-
-                row.BgColor = backGroundColor;
+                row.Cells[0].Attributes["class"] = "text-left py-4 px-6";
+                row.Attributes["class"] = backGroundColor;
 
                 // Hidden Cache Size -- for delta value
                 HtmlInputHidden child = new HtmlInputHidden();
@@ -363,7 +354,7 @@ namespace sitecore.admin.CacheTunerV2
         {
             Sitecore.Caching.CacheStatistics statistics = Sitecore.Caching.CacheManager.GetStatistics();
             HtmlTableRow row = Sitecore.Web.HtmlUtil.AddRow(tblCacheStats,
-                    new string[] { string.Empty, "<strong>Total</strong>",
+                    new string[] { "<strong>Total</strong>",
                     "<strong>"+CountTotal.ToString()+"</strong>",
                     "<strong>"+Sitecore.StringUtil.GetSizeString(statistics.TotalSize)+"</strong>",
                     "<strong>"+Sitecore.StringUtil.GetSizeString(DeltaTotal)+"</strong>",
@@ -371,12 +362,14 @@ namespace sitecore.admin.CacheTunerV2
                     "<strong>NA</strong>",
                     "<strong>NA</strong>"});
 
-            row.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#DDEAF9");
-            row.Style.Add(HtmlTextWriterStyle.Color, "black");
-            row.Style.Add(HtmlTextWriterStyle.BorderCollapse, "collapse");
-            row.Style.Add("border", "1px solid red");
-            row.Style.Add(HtmlTextWriterStyle.TextAlign, "center");
-            row.Style.Add(HtmlTextWriterStyle.FontWeight, "bold");
+            row.Attributes["class"] = "bg-gray-100 font-bold";
+            row.Cells[0].Attributes["class"] = "px-4 py-2 border";
+            row.Cells[1].Attributes["class"] = "px-4 py-2 border";
+            row.Cells[2].Attributes["class"] = "px-4 py-2 border";
+            row.Cells[3].Attributes["class"] = "px-4 py-2 border";
+            row.Cells[4].Attributes["class"] = "px-4 py-2 border";
+            row.Cells[5].Attributes["class"] = "px-4 py-2 border";
+            row.Cells[6].Attributes["class"] = "px-4 py-2 border";
         }
     }
 }
