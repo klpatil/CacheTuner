@@ -243,7 +243,7 @@ namespace sitecore.admin.CacheTunerV2
             Sitecore.Web.HtmlUtil.AddRow(table, new string[] { "Name", "Count", "Size", "Delta", "MaxSize",
             "Severity","Suggestion" });
             table.Rows[0].Attributes["class"] = "bg-gray-100 font-bold";
-            table.Rows[0].Cells[0].Attributes["class"] = "px-4 py-2 border";
+            table.Rows[0].Cells[0].Attributes["class"] = "text-left px-4 py-2 border";
             table.Rows[0].Cells[1].Attributes["class"] = "px-4 py-2 border";
             table.Rows[0].Cells[2].Attributes["class"] = "px-4 py-2 border";
             table.Rows[0].Cells[3].Attributes["class"] = "px-4 py-2 border";
@@ -332,7 +332,7 @@ namespace sitecore.admin.CacheTunerV2
                     severityLevel,
                     description});
 
-                row.Cells[0].Attributes["class"] = "text-left py-4 px-6";
+                row.Cells[0].Attributes["class"] = "text-left px-4 py-2";
                 row.Attributes["class"] = backGroundColor;
 
                 // Hidden Cache Size -- for delta value

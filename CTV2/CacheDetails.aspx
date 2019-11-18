@@ -4,7 +4,7 @@
 
 <head runat="server">
     <title>Sitecore Cache Tuner V2 : Cache Details</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
