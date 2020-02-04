@@ -41,9 +41,12 @@ namespace sitecore.admin.CacheTunerV2
                 {
                     TableRow tableRow = new TableRow();
                     tableRow.TableSection = TableRowSection.TableBody;
+                    tableRow.CssClass = "text-left";
 
                     AddTableCell(tableRow, aKey);
                     AddTableCell(tableRow, Convert.ToString(aiCache.GetValue(aKey)));
+                    tableRow.Cells[0].CssClass = "border bg-gray-100 py-2 px-4";
+                    tableRow.Cells[1].CssClass = "border bg-gray-100 py-2 px-4";
 
                     tblCacheDetails.Rows.Add(tableRow);
                 }
