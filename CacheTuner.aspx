@@ -122,7 +122,7 @@ Version : 1.1.0.0--%>
             //append new line
             sb.Append("\r\n");
 
-            Sitecore.Caching.ICacheInfo[] allCaches = Sitecore.Caching.CacheManager.GetAllCaches();
+            Sitecore.Caching.Cache[] allCaches = Sitecore.Caching.CacheManager.GetAllCaches();
             Array.Sort(allCaches, new Sitecore.Caching.CacheComparer());
 
             // Reset counters
@@ -130,7 +130,7 @@ Version : 1.1.0.0--%>
             DeltaTotal = 0;
             MaxSizeTotal = 0;
 
-            foreach (Sitecore.Caching.ICacheInfo cache in allCaches)
+            foreach (Sitecore.Caching.Cache cache in allCaches)
             {
                 string str = "size_" + cache.Id.ToShortID();
                 long @int = Sitecore.MainUtil.GetInt(base.Request.Form[str], 0);
@@ -241,7 +241,7 @@ Version : 1.1.0.0--%>
     /// </summary>
     private void ResetCacheList()
     {
-        Sitecore.Caching.ICacheInfo[] allCaches = Sitecore.Caching.CacheManager.GetAllCaches();
+        Sitecore.Caching.Cache[] allCaches = Sitecore.Caching.CacheManager.GetAllCaches();
         Array.Sort(allCaches, new Sitecore.Caching.CacheComparer());
 
         HtmlTable table = tblCacheStats;
@@ -262,7 +262,7 @@ Version : 1.1.0.0--%>
         DeltaTotal = 0;
         MaxSizeTotal = 0;
 
-        foreach (Sitecore.Caching.ICacheInfo cache in allCaches)
+        foreach (Sitecore.Caching.Cache cache in allCaches)
         {
 
             string str = "size_" + cache.Id.ToShortID();
@@ -355,7 +355,7 @@ Version : 1.1.0.0--%>
     /// to Update Totals
     /// </summary>
     /// <param name="allCaches">All Caches</param>
-    private void UpdateTotals(Sitecore.Caching.ICacheInfo[] allCaches)
+    private void UpdateTotals(Sitecore.Caching.Cache[] allCaches)
     {
         Sitecore.Caching.CacheStatistics statistics = Sitecore.Caching.CacheManager.GetStatistics();
         HtmlTableRow row = Sitecore.Web.HtmlUtil.AddRow(tblCacheStats,
