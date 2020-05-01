@@ -1,11 +1,17 @@
-# CacheTuner
+Please refer  : **Cache Tuner version compatibility table:**
 
-- Master : Pre Sitecore 9 version of CacheTuner
-- CacheTunerV2 : Sitecore 9 + and Slick UI by KayeeNL (Thanks!)
-- CacheTunerV2-BasicUI : Sitecore9 + Basic UI
+| Branch Name | Description  | Supported Version |
+|--|--|--|
+| 8.1-u2| Before 8.2 Cache API Changes| < Sitecore 8.2 |
+| master | Pre Sitecore 9 version of Cache Tuner | >= Sitecore 8.2 && < Sitecore 9 |
+| CacheTunerV2| Sitecore 9 + and Slick UI by KayeeNL (Thanks!)| >= Sitecore 9 |
+| CacheTunerV2-BasicUI| Sitecore9 + Basic UI| >= Sitecore 9 |
 
-Links:
-https://marketplace.sitecore.net/Modules/C/Cache_Tuner.aspx?sc_lang=en
+Read more:
 
-https://sitecorebasics.wordpress.com/2011/04/28/cache-tuner-my-first-shared-source-module/
-https://sitecorebasics.wordpress.com/2011/04/27/cache-tuner-user-guide/
+ - **Latest release** :  https://github.com/klpatil/CacheTuner/releases/tag/CTV2.0
+ - **Marketplace module** : https://marketplace.sitecore.net/Modules/C/Cache_Tuner.aspx?sc_lang=en
+ - **User guide** : https://sitecorebasics.wordpress.com/2011/04/27/cache-tuner-user-guide/
+ - **Blog post** : https://sitecorebasics.wordpress.com/2011/04/28/cache-tuner-my-first-shared-source-module/
+
+
