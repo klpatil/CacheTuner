@@ -158,13 +158,13 @@ namespace sitecore.admin.CacheTunerV2
                     if (thresholdValue > 80)
                     {
                         severityLevel = "ALERT";
-                        description = @"Time to tune this cache! Reason : 80% exceeded. New Cache Size should be (following 50 % Increment rule):" + Sitecore.StringUtil.GetSizeString((maxSize + (maxSize * 50) / 100)) + ". % of Usage : " + thresholdValue.ToString();
+                        description = @"Time to tune this cache! Reason : 80% exceeded. New Cache Size should be (following 50 % Increment rule):" + Sitecore.MainUtil.FormatSize((maxSize + (maxSize * 50) / 100)) + ". % of Usage : " + thresholdValue.ToString();
                     }
                     // OR If Delta value changes
                     else if (size != @int)
                     {
                         severityLevel = "ALERT";
-                        description = @"Time to tune this cache! Reason : Delta fluctuation. New Cache Size should be (following 50 % Increment rule):" + Sitecore.StringUtil.GetSizeString((maxSize + (maxSize * 50) / 100)) + ". % of Usage : " + thresholdValue.ToString();
+                        description = @"Time to tune this cache! Reason : Delta fluctuation. New Cache Size should be (following 50 % Increment rule):" + Sitecore.MainUtil.FormatSize((maxSize + (maxSize * 50) / 100)) + ". % of Usage : " + thresholdValue.ToString();
                     }
                     else if (thresholdValue >= 50)
                     {
@@ -180,11 +180,11 @@ namespace sitecore.admin.CacheTunerV2
                     sb.Append(",");
                     sb.Append(count.ToString());
                     sb.Append(",");
-                    sb.Append(Sitecore.StringUtil.GetSizeString(size));
+                    sb.Append(Sitecore.MainUtil.FormatSize(size));
                     sb.Append(",");
-                    sb.Append(Sitecore.StringUtil.GetSizeString(delta));
+                    sb.Append(Sitecore.MainUtil.FormatSize(delta));
                     sb.Append(",");
-                    sb.Append(Sitecore.StringUtil.GetSizeString(maxSize));
+                    sb.Append(Sitecore.MainUtil.FormatSize(maxSize));
                     sb.Append(",");
                     sb.Append(severityLevel);
                     sb.Append(",");
@@ -201,11 +201,11 @@ namespace sitecore.admin.CacheTunerV2
                 sb.Append(",");
                 sb.Append(CountTotal.ToString());
                 sb.Append(",");
-                sb.Append(Sitecore.StringUtil.GetSizeString(statistics.TotalSize));
+                sb.Append(Sitecore.MainUtil.FormatSize(statistics.TotalSize));
                 sb.Append(",");
-                sb.Append(Sitecore.StringUtil.GetSizeString(DeltaTotal));
+                sb.Append(Sitecore.MainUtil.FormatSize(DeltaTotal));
                 sb.Append(",");
-                sb.Append(Sitecore.StringUtil.GetSizeString(MaxSizeTotal));
+                sb.Append(Sitecore.MainUtil.FormatSize(MaxSizeTotal));
                 sb.Append(",");
                 sb.Append("NA");
                 sb.Append(",");
@@ -286,7 +286,7 @@ namespace sitecore.admin.CacheTunerV2
                 {
                     severityLevel = "ALERT";
                     description = @"Time to tune this cache! Reason : 80% exceeded. New Cache Size should be (following 50 % Increment rule)
-                :" + Sitecore.StringUtil.GetSizeString((maxSize + (maxSize * 50) / 100)) + ". % of Usage : " + thresholdValue.ToString();
+                :" + Sitecore.MainUtil.FormatSize((maxSize + (maxSize * 50) / 100)) + ". % of Usage : " + thresholdValue.ToString();
                     backGroundColor = "bg-red-500 border-red-700 font-semibold";
                 }
                 // OR If Delta value changes
@@ -294,7 +294,7 @@ namespace sitecore.admin.CacheTunerV2
                 {
                     severityLevel = "ALERT";
                     description = @"Time to tune this cache! Reason : Delta fluctuation. New Cache Size should be (following 50 % Increment rule)
-                :" + Sitecore.StringUtil.GetSizeString((maxSize + (maxSize * 50) / 100)) + ". % of Usage : " + thresholdValue.ToString();
+                :" + Sitecore.MainUtil.FormatSize((maxSize + (maxSize * 50) / 100)) + ". % of Usage : " + thresholdValue.ToString();
                     backGroundColor = "bg-red-500 border-red-700 font-semibold";
                 }
                 else if (thresholdValue >= 50)
@@ -326,9 +326,9 @@ namespace sitecore.admin.CacheTunerV2
                 HtmlTableRow row = Sitecore.Web.HtmlUtil.AddRow(table,
                     new string[] { cacheNameWithLink,
                     count.ToString(),
-                    Sitecore.StringUtil.GetSizeString(size),
-                    Sitecore.StringUtil.GetSizeString(delta),
-                    Sitecore.StringUtil.GetSizeString(maxSize),
+                    Sitecore.MainUtil.FormatSize(size),
+                    Sitecore.MainUtil.FormatSize(delta),
+                    Sitecore.MainUtil.FormatSize(maxSize),
                     severityLevel,
                     description});
 
@@ -356,9 +356,9 @@ namespace sitecore.admin.CacheTunerV2
             HtmlTableRow row = Sitecore.Web.HtmlUtil.AddRow(tblCacheStats,
                     new string[] { "<strong>Total</strong>",
                     "<strong>"+CountTotal.ToString()+"</strong>",
-                    "<strong>"+Sitecore.StringUtil.GetSizeString(statistics.TotalSize)+"</strong>",
-                    "<strong>"+Sitecore.StringUtil.GetSizeString(DeltaTotal)+"</strong>",
-                    "<strong>"+Sitecore.StringUtil.GetSizeString(MaxSizeTotal)+"</strong>",
+                    "<strong>"+Sitecore.MainUtil.FormatSize(statistics.TotalSize)+"</strong>",
+                    "<strong>"+Sitecore.MainUtil.FormatSize(DeltaTotal)+"</strong>",
+                    "<strong>"+Sitecore.MainUtil.FormatSize(MaxSizeTotal)+"</strong>",
                     "<strong>NA</strong>",
                     "<strong>NA</strong>"});
 
